@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Personal Backend Demo</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Personal Backend Demo</h1>
+  
+  <div>
+    <h2>Sign Up</h2>
+    <button id="signup">Signup</button>
+  </div>
+  
+  <div>
+    <h2>Fetch</h2>
+    <input id="username" placeholder="Username" />
+    <button id="me">Me</button>
+    <button id="fetch">Fetch</button>
+  </div>
+  
+  <div>
+    <h2>Replace vs Patch</h2>
+    
+<textarea id="userdata" placeholder="JSON">
+{
+  "metadata": { 
+    "version": 0
+  },
+  "userdata": { 
+    "foo": "bar" 
+  }
+}
+</textarea>
+    
+    <button id="replace">Replace</button>
+    <button id="patch">Patch</button>
+
+  <div id="status">
+  </div>
+  
+    <div class="help">
+    <strong>Replace</strong>
+    The value of <em>userdata</em> replaces whatever is on the server for <em>userdata</em>.
+    </div>
+
+    <div class="help">
+    <strong>Patch</strong>
+    The value of <em>userdata</em> is merged with what is already on the server in <em>userdata</em>.
+    </div>
+    
+    <div class="help">
+    <strong>metadata</strong>
+    Always specify the expected <em>version</em>.
+    If you update <em>collaborators</em>, it replaces whatever is on the server
+    ignoring patch mode (which is only for <em>userdata</em>).    
+      
+      Other metadata changes are ignored.
+    </div>
+
+  </div>
+
+  <div>
+    <h2>Watch</h2>
+    <input id="watch-username" placeholder="Username" />
+    <button id="watch">Watch</button>
+    <button id="unwatch">Unwatch</button>    
+    <textarea id="watch-userdata" disabled></textarea>
+  </div>
+
+
+  <script src="https://code.jquery.com/jquery-2.2.2.min.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/main.js"></script>
+    
+</body>
+</html>
