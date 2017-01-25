@@ -2,32 +2,28 @@
 
 This is a simple Socket.io server for getting, putting, patching JSON-encodable data on a per-user basis.
 
-Allows users to add collaborators which have read/write 
-access to the granter's data.
+Allows users to add collaborators which have read/write access to the granter's data.  That's right!  A personal backend with collaboration!  I wrote this initially for a home inventory management app to be shared with my wife; so, kind of personal.
 
-User data is *versioned*.  Clients specify the current
-version for updates.
+User data has a *version* number.  Clients specify the current version for updates.
 
 Updates may be full replacements or patches/merges.
 
-Clients can fetch or get the full data or just some 
-paths therein (e.g. `a.b.c`).
+Clients can fetch or get the full data or just some paths therein (e.g. `a.b.c`).
 
-Clients can watch for changes to a user's data (including their own)
-as long as they are the owner of the data or a collaborator thereof.
+Clients can watch for changes to a user's data (including their own) as long as they are the owner of the data or a collaborator thereof.
 
 ## UserData
 
-		{
-			"metadata": {
-					"username": String,
-					"version": Number
-					"collaborators": [Username],
-					"createdAt": Date,
-					"lastUpdate": { "at": Date, "by": Username },
-			},
-			"userdata": Object
-		}
+    {
+		"metadata": {
+            "username": String,
+            "version": Number,
+            "collaborators": [Username],
+            "createdAt": Date,
+            "lastUpdate": { "at": Date, "by": Username }
+        },
+        "userdata": Object
+    }
     
 ## Client Messages
 
@@ -70,8 +66,9 @@ as long as they are the owner of the data or a collaborator thereof.
       'd.e.f'
     ]
     
-This is kind of like a poor man's GraphQL.  It will only return some fields
-and the 'data' in a 'data' message from the server will take the same shape:
+Fields are a poor man's GraphQL.  Specifying some fields to `fetch` or `watch` will only 
+return some fields and the `data` in a `data` or `change` message from the server will 
+take the same shape.
 
 ## Author
 
