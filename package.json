@@ -1,0 +1,32 @@
+{
+	"name": "user-data-backend",
+	"version": "0.1.0",
+	"description": "A simple backend for getting, storing, patching, sharing user data",
+	"main": "index.js",
+	"scripts": {
+		"start": "node index.js"
+	},
+	"dependencies": {
+		"express": "^4.12.4",
+		"socket.io": "*",
+		"filenamify": "^2.0.0",
+		"bandname": "^1.0.0",
+		"jsonwebtoken": "^7.2.1",
+		"lodash": "^4.17.4",
+		"lru-cache": "^4.0.2",
+		"debug": "^2.6.0"
+	},
+	"engines": {
+		"node": "4.4.5"
+	},
+	"keywords": [
+		"node",
+		"hyperdev",
+		"express",
+		"backend",
+		"datastore",
+		"api",
+		"web service"
+	],
+	"license": "MIT"
+}

@@ -1,2 +1,78 @@
-# personal-backend
-A personal backend for personal projects
+# A simple backend for personal projects
+
+This is a simple Socket.io server for getting, putting, patching JSON-encodable data on a per-user basis.
+
+Allows users to add collaborators which have read/write 
+access to the granter's data.
+
+User data is *versioned*.  Clients specify the current
+version for updates.
+
+Updates may be full replacements or patches/merges.
+
+Clients can fetch or get the full data or just some 
+paths therein (e.g. `a.b.c`).
+
+Clients can watch for changes to a user's data (including their own)
+as long as they are the owner of the data or a collaborator thereof.
+
+## UserData
+
+		{
+			"metadata": {
+					"username": String,
+					"version": Number
+					"collaborators": [Username],
+					"createdAt": Date,
+					"lastUpdate": { "at": Date, "by": Username },
+			},
+			"userdata": Object
+		}
+    
+## Client Messages
+
+    'signup'    
+    'auth', token    
+    'update', newData, version, targetUsername=null, patch=false    
+    'fetch', targetUsername=null, fields=null
+    'watch', targetUsername
+    'unwatch', targetUsername
+
+## Server Messages
+
+    'auth', username, token    
+    'version', username, version    
+    'error', message    
+    'data', targetUsername, data
+    'change', targetUsername, data
+    
+## Error Messages
+
+    'invalid token'
+    'version mismatch'
+    'unauthorized'
+    
+## Updates
+
+    newData = {
+      metadata: {
+        version: int,             // expected server version of data
+        collaborators: [String]   // replaces entirely regardless of patch
+      },
+      userdata: Object            // replacement or changes (for patch)
+    }
+    
+## Fields
+
+    fields = [
+      'a.b',                      // {a: {b: 1}}
+      'c',                        // {c: 'foo'}
+      'd.e.f'
+    ]
+    
+This is kind of like a poor man's GraphQL.  It will only return some fields
+and the 'data' in a 'data' message from the server will take the same shape:
+
+## Author
+
+Brian Hammond <brian@fictorial.com>
