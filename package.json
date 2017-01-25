@@ -1,7 +1,7 @@
 {
-	"name": "user-data-backend",
+	"name": "personal-backend",
 	"version": "0.1.0",
-	"description": "A simple backend for getting, storing, patching, sharing user data",
+	"description": "A personal backend for personal projects",
 	"main": "index.js",
 	"scripts": {
 		"start": "node index.js"
