@@ -70,6 +70,21 @@ Fields are a poor man's GraphQL.  Specifying some fields to `fetch` or `watch` w
 return some fields and the `data` in a `data` or `change` message from the server will 
 take the same shape.
 
+## Configuration
+
+### ENV
+
+    PORT=8080
+    CACHE_SIZE=100
+    CACHE_MAX_AGE=900000
+    JWT_SECRET=...
+    MAX_DATA_SIZE_JSON=65536
+    DEBUG=api
+
+## TODO
+
+- Rate limit signups from the same IP but this is a cat and mouse game
+
 ## Author
 
 Brian Hammond <brian@fictorial.com>
