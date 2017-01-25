@@ -84,6 +84,7 @@ take the same shape.
 ## TODO
 
 - Rate limit signups from the same IP but this is a cat and mouse game
+- Push notifications through OneSignal as alternative to `watch`
 
 ## Author
 
